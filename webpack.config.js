@@ -1,5 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const BundleAnalyzerPlugin =
+//   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const speedMeasurePlugin = require("speed-measure-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -17,6 +20,10 @@ module.exports = {
    */
   devServer: {
     static: "./dist",
+  },
+
+  resolve: {
+    modules: ["node_modules"],
   },
 
   // 修改代码文件（不包括配置文件）时，自动编译代码
@@ -66,7 +73,13 @@ module.exports = {
       filename: "app.html", // 文件名
       inject: "body", // 引入 script 放在 body 中
     }),
+    // new BundleAnalyzerPlugin(),
+    new speedMeasurePlugin(),
   ],
+
+  optimization: {
+    usedExports: true,
+  },
 
   output: {
     path: path.resolve(__dirname, "dist"),

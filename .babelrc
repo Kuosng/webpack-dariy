@@ -1,0 +1,10 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false // 关闭模块转换功能
+      }
+    ]
+  ]
+}
