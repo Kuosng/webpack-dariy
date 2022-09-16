@@ -79,6 +79,7 @@ module.exports = {
 
   optimization: {
     usedExports: true,
+    minimize: true,
   },
 
   output: {
